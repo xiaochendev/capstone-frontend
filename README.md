@@ -29,4 +29,7 @@
 - `git commit -m "your message here"` - create a message for that specific version of your project
 - `git push origin main`. (if used with -u (upstream flag) you only need git push for then on out)
 
-# do some change
+# diverged solution
+- I want to keep both sets of changes on main. To do this, I’ll run `git pull --rebase`.
+- The remote changes are useless and I want to overwrite them. To do this, I’ll run `git push --force`
+- The local changes are useless and I want to overwrite them. To do this, I’ll run `git reset --hard origin/main`
