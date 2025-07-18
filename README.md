@@ -28,3 +28,5 @@
 - `git add .` - stages current state of project, to be committed (git add all)
 - `git commit -m "your message here"` - create a message for that specific version of your project
 - `git push origin main`. (if used with -u (upstream flag) you only need git push for then on out)
+
+# do some change
