@@ -28,3 +28,9 @@
 - `git add .` - stages current state of project, to be committed (git add all)
 - `git commit -m "your message here"` - create a message for that specific version of your project
 - `git push origin main`. (if used with -u (upstream flag) you only need git push for then on out)
+
+# Git branch and merge:
+- `git branch <new-branch>` - create new branch
+- `git checkout <branch-name>` - switch to branch
+- `git merge <branch-feature>` - merge to 
+
