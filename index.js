@@ -222,7 +222,7 @@ async function handleBreedSelect() {
     });
 
     const cats = res.data;
-    console.log("Fetched cat images:", cats);
+    // console.log("Fetched cat images:", cats);
 
     if (cats.length === 0) {
       infoDump.innerHTML = `<p>No images found for this breed.</p>`;
