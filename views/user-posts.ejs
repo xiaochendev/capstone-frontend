@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+    <%- include('partials/nav') %>
+    <%- include('partials/messages') %>
+
+    <h1>Posts by <%= user.name %> (@<%= user.username %>)</h1>
+
+    <% if (posts && posts.length > 0) { %>
+      <ul>
+        <% posts.forEach(post => { %>
+          <li>
+            <h3><a href="/api/posts/<%= post.id %>"><%= post.title %></a></h3>
+            <p><%= post.body %></p>
+            <small>on post ID: <%= post.id %></small>
+          </li>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No posts available for this user.</p>
+    <% } %>
+
+    <a href="/api/users">← Back to All Users</a>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('partials/nav') %>
+    <%- include('partials/messages') %>
+
+    <h1>Comments by <%= user.name %>
+      <% if (post) { %>
+        on "<%= post.title %>"
+      <% } %>
+    </h1>
+
+    <% if (userComments.length > 0) { %>
+      <ul>
+        <% userComments.forEach(comment => { %>
+          <li><%= comment.body %></li>
+          <a href="/api/posts/<%= comment.postId %>">on postId: <%= comment.postId %></a>
+        <% }) %>
+      </ul>
+    <% } else { %>
+      <p>No comments found for this user.</p>
+    <% } %>
+
+    <% if (post) { %>
+      <a href="/api/posts/<%= post.id %>">← Back to Post</a>
+    <% } else { %>
+      <a href="/api/users/<%= user.id %>">← Back to User</a>
+    <% } %>
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>user profile</title>
+</head>
+
+<body>
+    <%- include('partials/nav') %>
+    <%- include('partials/messages') %>
+
+    <h1><%= user.name %> (@<%= user.username %>)</h1>
+    <p>Email: <%= user.email %></p>
+
+    <h2>Edit User</h2>
+    <form action="/api/users/<%= user.id %>?_method=PATCH" method="POST">
+        <input name="name" value="<%= user.name %>">
+        <input name="username" value="<%= user.username %>">
+        <input name="email" value="<%= user.email %>">
+        <button type="submit">Update User</button>
+    </form>
+
+    <form action="/api/users/<%= user.id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete User</button>
+    </form>
+
+    <h3>Posts</h3>
+    <ul>
+        <% userPosts.forEach(p => { %>
+     <li><%= p.title %></li>
+        <% }) %>
+    </ul>
+        <h3>Comments</h3>
+    <ul>
+        <% userComments.forEach(c => { %>
+            <li><%= c.body %> (on post ID <%= c.postId %>)</li>
+        <% }) %>
+    </ul>
+</body>
+</html>
