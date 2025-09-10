@@ -31,7 +31,6 @@ Notes: Install Extensions (Thunder Client or Postman) in Visual Studio allow you
 | Pages |   |   |   |
 |  GET  | / |  - |  Render home page (EJS) |
 |  GET  | /about |  - |  Render about page (EJS) |
-|  POST  | /submit |  - |  Submit form from home page |
 | Users |   |   |   |
 |  GET  | /api/users |  - |  Get all users  |
 |  POST  | /api/users |  - |  Create a new user  |
