@@ -21,7 +21,7 @@
         <% if (userComments.length > 0) { %>
           <ul class="user-comments-list">
             <% userComments.forEach(comment => { %>
-              <li><%= comment.body %></li>
+              <li><%= comment.content %></li>
               <a href="/api/posts/<%= comment.postId %>">on postId: <%= comment.postId %></a>
             <% }) %>
           </ul>

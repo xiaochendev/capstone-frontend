@@ -19,7 +19,7 @@
             <% posts.forEach(post => { %>
               <li>
                 <h3><a href="/api/posts/<%= post.id %>"><%= post.title %></a></h3>
-                <p><%= post.body %></p>
+                <p><%= post.content %></p>
                 <small>on post ID: <%= post.id %></small>
               </li>
             <% }) %>

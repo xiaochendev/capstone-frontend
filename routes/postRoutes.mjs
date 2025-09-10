@@ -30,23 +30,51 @@ router
     let id = posts[posts.length - 1].id + 1; // creating a new id
     // let id = posts.length++;
 
-    // creating a new object that will be pushed to the posts array
-    if (userId && title && content) {
-      const post = {
-        // id: id,
-        id: posts.length > 0 ? posts[posts.length - 1].id + 1 : 1,
-        // userId: userId,
-        userId: Number(userId),
-        title: title,
-        content: content,
-      };
-      posts.push(post);
-      // res.json(posts[posts.length - 1]);
-      req.flash('success', 'Post created successfully');
-      res.redirect(`/api/posts`);
-    } else {
-      res.json({ error: "Insufficient Data" });
+    // // creating a new object that will be pushed to the posts array
+    // if (userId && title && content) {
+    //   const post = {
+    //     // id: id,
+    //     id: posts.length > 0 ? posts[posts.length - 1].id + 1 : 1,
+    //     // userId: userId,
+    //     userId: Number(userId),
+    //     title: title,
+    //     content: content,
+    //   };
+    //   posts.push(post);
+    //   // res.json(posts[posts.length - 1]);
+    //   req.flash('success', 'Post created successfully');
+    //   res.redirect(`/api/posts`);
+    // } else {
+    //   res.json({ error: "Insufficient Data" });
+    // }
+
+    // basic validation:
+    if (!userId || !title || !content) {
+      return res.status(400).json({error: "Insufficient Data" });
+      // req.flash('error', "Insufficient Data");   // already pre-set required in form, not gonna use atm
+      // return res.redirect('/api/posts');
     }
+
+    // check if user exists
+    const userExists = users.some(user => user.id == Number(userId));
+    if(!userExists) {
+      // return res.status(400).json({error: `User with id ${userId} does not exist` })
+      req.flash('error', `Failed to create; User ID ${userId} does not exist`);
+      return res.redirect('/api/posts');
+    }
+
+    // create and add the new post
+    const newPost = {
+        id: posts.length > 0 ? posts[posts.length - 1].id + 1 : 1,
+        userId: Number(userId),
+        title,
+        content
+    };
+
+    posts.push(newPost);
+    // res.json(posts[posts.length - 1]);
+    req.flash('success', 'Post created successfully');
+    res.redirect(`/api/posts`);
   });
 
 // @route   GET /api/posts/:id

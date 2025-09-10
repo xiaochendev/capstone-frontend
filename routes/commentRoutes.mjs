@@ -1,5 +1,8 @@
 import express from 'express';
 import { comments } from '../data/comments.mjs';
+import { users } from "../data/users.mjs";
+import { posts } from "../data/posts.mjs";
+
 
 const router = express.Router();
 
@@ -36,14 +39,33 @@ router
     // @body    userId=<number>, postId=<number>, body=<string>
     // @access  Public
     .post((req, res) => {
-          const { userId, postId, body } = req.body;
+        const { userId, postId, body } = req.body;
 
         if (!userId || !postId || !body) {
             return res.status(400).json({ error: 'Missing required fields' });
+            // req.flash('error', 'All fields are required');
+            // return res.redirect('/api/comments'); 
+        }
+        
+        // validate user exist
+        const userExists = users.some(user => user.id === Number(userId));
+        if (!userExists) {
+            req.flash('error', `Failed to comment!! User ID ${userId} does not exist`);
+            return res.redirect('/api/comments');
         }
 
+        // validate post exist
+        const postExist = posts.some(post => post.id === Number(postId));
+        if (!postExist) {
+            req.flash('error', `Failed to comment!! Post ID ${postId} does not exist`);
+            return res.redirect('/api/comments');
+        }
+
+        // Create new comment
         const newComment = {
-            id: comments.length > 0 ? comments[comments.length - 1].id + 1 : 1,
+            id: comments.length > 0 
+                    ? comments[comments.length - 1].id + 1 
+                    : 1,
             userId: Number(userId),
             postId: Number(postId),
             body,

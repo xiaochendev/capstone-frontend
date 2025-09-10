@@ -120,15 +120,23 @@ router
     .get((req, res, next) => {
         const { id } = req.params;
         const userPosts = posts.filter((post) => post.userId == id);
+
+        // validate user
+        const user = users.find(u => u.id == id);
+        if (!user) {
+            req.flash('info', 'User not found.'); 
+            return res.redirect('/api/users');
+        }
         
         if (userPosts.length > 0) {
             const user = users.find(u => u.id == id);
-
             // res.json(userPosts);
             req.flash('success', 'Posts retrieved successfully');
             res.render('user-posts', { title: 'User Posts', user, posts: userPosts });
         } else {
-            next(); // No posts found — let global 404 handler handle it
+            // next(); // No posts found — let global 404 handler handle it
+            req.flash('info', 'This user has no posts yet.');
+            res.render('user-posts', { title: 'User Posts', user, posts: [] });
         }
     })
 
@@ -140,6 +148,15 @@ router
     .get((req, res, next) => {
         const { id } = req.params;
         const { postId } = req.query;
+
+        const user = users.find(u => u.id == id); 
+        const post = postId ? posts.find(p => p.id == postId) : null;  
+
+        // validate user exist
+        if (!user) {
+            req.flash('error', 'User not found');
+            return res.redirect('/api/users');
+        }
 
         let userComments = comments.filter((comment) => comment.userId == id);
         
@@ -167,7 +184,9 @@ router
               userComments 
             });
         } else {
-            next();
+            // next();
+            req.flash('info', 'This user has no coments yet.');
+            res.render('user-comments', { title: 'User Comments', user, post, userComments });
         }
     })
 
