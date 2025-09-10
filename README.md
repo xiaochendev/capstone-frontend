@@ -1,6 +1,5 @@
 # UI Admin 
 - UI for non-technical admins to CRUD on Posts, Users, Comments
-- Some Unknow not solve yet, not enough validations when Create New post/user/comment
 
 # Steps
 1. Copy rerepository to your local file
