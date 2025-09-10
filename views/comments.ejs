@@ -9,37 +9,39 @@
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
 
-    <h2>Create Comment</h2>
-    <form action="/api/comments" method="POST">
-        <input name="userId" placeholder="User ID" required>
-        <input name="postId" placeholder="Post ID" required>
-        <textarea name="body" placeholder="Comment body" required></textarea>
-        <button type="submit">Create Comment</button>
-    </form>
+    <main class="comments-page">
 
-    <header>
+      <section class="comments-form">
+        <h2>Create New Comment</h2>
+        <form action="/api/comments" method="POST">
+            <input name="userId" placeholder="User ID" required>
+            <input name="postId" placeholder="Post ID" required>
+            <textarea name="body" placeholder="Comment body" required></textarea>
+            <button type="submit">Create Comment</button>
+        </form>
+      </section>
+
+      <section class="comments-section">
         <h1>All Comments</h1>
-    </header>
+          <% if (comments && comments.length > 0) { %>
+            <ul class="comments-list">
+              <% comments.forEach(comment => { %>
+                <li>
+                  <p><strong>User ID:</strong> <%= comment.userId %></p>
+                  <p><strong>Post ID:</strong> <%= comment.postId %></p>
+                  <p>
+                    <strong>Comment:</strong>
+                    <a href="/api/comments/<%= comment.id %>"><%= comment.body %></a>
+                  </p>
+                </li>
+              <% }) %>
+            </ul>
+          <% } else { %>
+            <p>No comments available.</p>
+          <% } %>
+      </section>
 
-    <main>
-      <% if (comments && comments.length > 0) { %>
-        <ul>
-          <% comments.forEach(comment => { %>
-            <li>
-              <p><strong>User ID:</strong> <%= comment.userId %></p>
-              <p><strong>Post ID:</strong> <%= comment.postId %></p>
-              <p>
-                <strong>Comment:</strong>
-                <a href="/api/comments/<%= comment.id %>"><%= comment.body %></a>
-              </p>
-            </li>
-          <% }) %>
-        </ul>
-      <% } else { %>
-        <p>No comments available.</p>
-      <% } %>
     </main>
-
 
 </body>
 </html>

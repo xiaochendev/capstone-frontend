@@ -10,29 +10,32 @@
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
 
-    <h1>Comments by <%= user.name %>
-      <% if (post) { %>
-        on "<%= post.title %>"
-      <% } %>
-    </h1>
+    <main class="user-comments-page">
 
-    <% if (userComments.length > 0) { %>
-      <ul>
-        <% userComments.forEach(comment => { %>
-          <li><%= comment.body %></li>
-          <a href="/api/posts/<%= comment.postId %>">on postId: <%= comment.postId %></a>
-        <% }) %>
-      </ul>
-    <% } else { %>
-      <p>No comments found for this user.</p>
-    <% } %>
+      <section class="user-comments-section">
+        <h1>Comments by <%= user.name %>
+          <% if (post) { %>
+            on "<%= post.title %>"
+          <% } %>
+        </h1>
+        <% if (userComments.length > 0) { %>
+          <ul class="user-comments-list">
+            <% userComments.forEach(comment => { %>
+              <li><%= comment.body %></li>
+              <a href="/api/posts/<%= comment.postId %>">on postId: <%= comment.postId %></a>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p>No comments found for this user.</p>
+        <% } %>
 
-    <% if (post) { %>
-      <a href="/api/posts/<%= post.id %>">← Back to Post</a>
-    <% } else { %>
-      <a href="/api/users/<%= user.id %>">← Back to User</a>
-    <% } %>
+        <% if (post) { %>
+          <a href="/api/posts/<%= post.id %>">← Back to Post</a>
+        <% } else { %>
+          <a href="/api/users/<%= user.id %>">← Back to User</a>
+        <% } %>
+      </section>
 
-
+    </main>
 </body>
 </html>

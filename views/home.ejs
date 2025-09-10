@@ -12,37 +12,51 @@
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
 
-    <h1>Welcome</h1>
-    <h2>Users</h2>
-    <ul>
-      <% users.forEach(user => { %>
-        <li>
-          <a href="/api/users/<%= user.id %>">
-            <%= user.name %> (@<%= user.username %>)
-          </a>
-        </li>
-      <% }) %>
-    </ul>
+    <main class="home-page">
 
-    <h1>All Posts</h1>
-    <ul>
-      <% posts.forEach(post => { %>
-        <li>
-          <a href="/api/posts/<%= post.id %>"><strong><%= post.title %></strong></a><br>
-          <small>by 
-            <%= (users.find(u => u.id == post.userId) || {}).username %>
-          </small>
-        </li>
-      <% }) %>
-    </ul>
+      <section class="welcome">
+        <h1>Board</h1>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+      </section>
 
-    <h2>Contact Us</h2>
-    <form action="/submit" method="POST">
-        <label>Name: <input type="text" name="name" required /></label><br>
-        <label>Email: <input type="email" name="email" required /></label><br>
-        <button type="submit">Submit</button>
-    </form>
+      <section class="users-list">
+          <h2>All Users</h2>
+          <ul>
+            <% users.forEach(user => { %>
+              <li>
+                <a href="/api/users/<%= user.id %>">
+                  <%= user.name %> (@<%= user.username %>)
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+      </section>
+      
+      <section class="posts-list">
+          <h1>All Posts</h1>
+          <ul>
+            <% posts.forEach(post => { %>
+              <li>
+                <a href="/api/posts/<%= post.id %>"><strong><%= post.title %></strong></a><br>
+                <small>by 
+                  <%= (users.find(u => u.id == post.userId) || {}).username %>
+                </small>
+              </li>
+            <% }) %>
+          </ul>
+      </section>
 
+      <section class="contact">
+          <h2>Contact</h2>
+          <form action="/submit" method="POST">
+              <label>Name: <input type="text" name="name" required /></label><br>
+              <label>Email: <input type="email" name="email" required /></label><br>
+              <label>Content: <input type="text" name="content" required></label><br><br>
+              <button type="submit">Submit</button>
+          </form>
+      </section>
+
+  </main> 
 </body>
 
 </html>

@@ -11,25 +11,34 @@
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
 
-    <h1>All Users</h1>
-    <ul>
-      <% users.forEach(user => { %>
-        <li>
-            <a href="/api/users/<%= user.id %>"><%= user.name %> (@<%= user.username %>)</a>
-            <ul>
-                <li><a href="/api/users/<%= user.id %>/posts">all Posts by <%= user.username %></a></li>
-                <li><a href="/api/users/<%= user.id %>/comments">all Comments by <%= user.username %></a></li>
-            </ul>
-        </li>
-      <% }) %>
-    </ul>
+    <main class="users-page">
 
-    <h2>Create New User</h2>
-    <form action="/api/users" method="POST">
-        <input name="name" placeholder="Name" required>
-        <input name="username" placeholder="Username" required>
-        <input name="email" placeholder="Email" type="email" required>
-        <button type="submit">Create User</button>
-    </form>
+        <section class="users-form">
+            <h2>Create New User</h2>
+            <form action="/api/users" method="POST">
+                <input name="name" placeholder="Name" required>
+                <input name="username" placeholder="Username" required>
+                <input name="email" placeholder="Email" type="email" required>
+                <button type="submit">Create User</button>
+            </form>
+        </section>
+
+        <section class="users-section">
+            <h1>All Users</h1>
+                <ul class="users-list">
+                <% users.forEach(user => { %>
+                    <li>
+                        <a href="/api/users/<%= user.id %>"><%= user.name %> (@<%= user.username %>)</a>
+                        <ul>
+                            <li><a href="/api/users/<%= user.id %>/posts">all Posts by <%= user.username %></a></li>
+                            <li><a href="/api/users/<%= user.id %>/comments">all Comments by <%= user.username %></a></li>
+                        </ul>
+                    </li>
+                <% }) %>
+                </ul>
+        </section>
+
+    </main>
+   
 </body>
 </html>

@@ -9,29 +9,33 @@
 <body>
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
-    <header>
-        <h1>Comment Details</h1>
-    </header>
 
-    <main>
-        <section>
+    <main class="comment-page">
+
+        <section class="comment-form">
+            <h2>Edit Comment</h2>
+            <form action="/api/comments/<%= comment.id %>?_method=PATCH" method="POST">
+                <textarea name="body"><%= comment.body %></textarea>
+                <button type="submit">Update Comment</button>
+            </form>
+            <form action="/api/comments/<%= comment.id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Comment</button>
+            </form>
+        </section>  
+
+        <section class="comment-detail">
+            <h1>Comment Details</h1>
             <h2>Comment</h2>
             <p><strong>Comment ID:</strong> <%= comment.id %></p>
-            <p><strong>User ID:</strong> <%= comment.userId %></p>
-            <p><strong>Post ID:</strong> <%= comment.postId %></p>
+            <p><strong>User ID:</strong>
+                <a href="/api/users/<%= comment.userId %>"><%= comment.userId %></a>
+            </p>
+            <p><strong>Post ID:</strong> 
+                <a href="/api/posts/<%= comment.postId %>"><%= comment.postId %></a>
+            </p>
             <p><strong>Body:</strong> <%= comment.body %></p>
         </section>
     </main>
-
-    <h2>Edit Comment</h2>
-    <form action="/api/comments/<%= comment.id %>?_method=PATCH" method="POST">
-        <textarea name="body"><%= comment.body %></textarea>
-        <button type="submit">Update Comment</button>
-    </form>
-
-    <form action="/api/comments/<%= comment.id %>?_method=DELETE" method="POST">
-        <button type="submit">Delete Comment</button>
-    </form>
 
 </body>
 </html>

@@ -9,47 +9,53 @@
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
 
-    <h2>Create New Post</h2>
-    <form action="/api/posts" method="POST">
-        <input name="userId" placeholder="User ID" required>
-        <input name="title" placeholder="Title" required>
-        <textarea name="content" placeholder="Content" required></textarea>
-        <button type="submit">Create Post</button>
-    </form>
+    <main class="posts-page">
+      
+      <section class="posts-form">
+        <h2>Create New Post</h2>
+        <form action="/api/posts" method="POST">
+            <input name="userId" placeholder="User ID" required>
+            <input name="title" placeholder="Title" required>
+            <textarea name="content" placeholder="Content" required></textarea>
+            <button type="submit">Create Post</button>
+        </form>
+      </section>
 
-    <main>
-      <% if (posts && posts.length > 0) { %>
-        <ul>
-          <% posts.forEach(post => { %>
-            <li>
-              <h3>
-                  <a href="/api/posts/<%= post.id %>"><%= post.title %></a>
-              </h3>
-              <p><strong>User ID:</strong> <%= post.userId %></p>
-              <p><%= post.content %></p>
+      <section class="posts-section">
+        <% if (posts && posts.length > 0) { %>
+          <ul class="posts-list">
+            <% posts.forEach(post => { %>
+              <li>
+                <h3>
+                    <a href="/api/posts/<%= post.id %>"><%= post.title %></a>
+                </h3>
+                <p><strong>User ID:</strong> <%= post.userId %></p>
+                <p><%= post.content %></p>
 
-                <% if (post.comments && post.comments.length > 0) { %>
-                  <h4>Comments:</h4>
-                  <ul>
-                    <% post.comments.forEach(comment => { %>
-                      <li>
-                        <%= comment.body %>
-                        — <a href="/api/users/<%= comment.userId %>/comments?postId=<%= post.id %>">
-                            <%= (users.find(u => u.id == comment.userId) || {}).username || "Unknown" %>
-                          </a>
-                      </li>
-                    <% }) %>
-                  </ul>
-                <% } else { %>
-                  <p><em>No comments yet.</em></p>
-                <% } %>
-                
-            </li>
-          <% }) %>
-        </ul>
-      <% } else { %>
-        <p>No posts available.</p>
-      <% } %>
+                  <% if (post.comments && post.comments.length > 0) { %>
+                    <h4>Comments:</h4>
+                    <ul>
+                      <% post.comments.forEach(comment => { %>
+                        <li>
+                          <%= comment.body %>
+                          — <a href="/api/users/<%= comment.userId %>/comments?postId=<%= post.id %>">
+                              <%= (users.find(u => u.id == comment.userId) || {}).username || "Unknown" %>
+                            </a>
+                        </li>
+                      <% }) %>
+                    </ul>
+                  <% } else { %>
+                    <p><em>No comments yet.</em></p>
+                  <% } %>
+                  
+              </li>
+            <% }) %>
+          </ul>
+        <% } else { %>
+          <p>No posts available.</p>
+        <% } %>
+      </section>
+
     </main>
 
 </body>

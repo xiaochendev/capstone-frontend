@@ -4,6 +4,10 @@ html, body {
     box-sizing: border-box;
 }
 
+h1, h2 {
+  color: #333;
+}
+
 .success {
   background-color: #d4edda;
   color: #155724;
@@ -12,8 +16,113 @@ html, body {
   border-left: 5px solid #28a745;
 }
 
-/* .error {
+.error {
   color: red;
   font-weight: bold;
   margin: 1em 0;
-} */
+}
+
+.main-nav {
+  margin-bottom: 20px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #333;
+  margin: 0 10px;
+}
+
+.main-nav a:hover {
+  color: #007BFF;
+}
+
+.post-comments {
+  margin-top: 2em;
+  padding: 1em;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
+}
+
+.home-page,
+.posts-page,
+.users-page,
+.comments-page,
+.user-comments-page,
+.user-posts-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.posts-form,
+.users-form,
+.comments-form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.posts-list,
+.users-list,
+.comments-list
+.user-comments-list,
+.user-posts-list {
+  list-style: none;
+}
+
+.posts-list a,
+.users-list a,
+.comments-list a,
+.user-comments-list a,
+.user-posts-list a {
+  color: #007bff;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+}
+
+.posts-list a:hover,
+.users-list a:hover,
+.comments-list a:hover,
+.user-comments-list a:hover,
+.user-posts-list a:hover {
+  text-decoration: underline;
+}
+
+
+.comment-page,
+.post-page,
+.user-page {
+  max-width: 700px;
+  margin: 2em auto;
+  padding: 1em;
+  font-family: Arial, sans-serif;
+}
+.comment-detail a,
+.post-detail a, 
+.user-detail a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.comment-detail a:hover,
+.post-detail a:hover,
+.user-detail a:hover {
+  text-decoration: underline;
+}
+
+.post-form,
+.user-form,
+.comment-form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

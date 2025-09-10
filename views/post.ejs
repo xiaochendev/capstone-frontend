@@ -6,31 +6,37 @@
     <title><%= post.title %> - Post</title>
     <link rel="stylesheet" href="/style.css">
 </head>
+
 <body>
     <%- include('partials/nav') %>
     <%- include('partials/messages') %>
-    <main>
-        <h1>Title: <%= post.title %></h1>
-        <p><%= post.content %></p>
-        <% if (author) { %>
-          <p><strong>Author:</strong> <a href="/api/users/<%= author.id %>"><%= author.name %></a></p>
-        <% } else { %>
-          <p><strong>Author:</strong> Unknown</p>
-        <% } %>
 
-        <%- include('partials/post-comments', { comments: postComments, users }) %>
+    <main class="post-page">
+        <section class="post-form">
+            <h2>Edit Post</h2>
+            <form action="/api/posts/<%= post.id %>?_method=PATCH" method="POST">
+                <input name="title" value="<%= post.title %>">
+                <textarea name="content"><%= post.content %></textarea>
+                <button type="submit">Update Post</button>
+            </form>
 
-        <h2>Edit Post</h2>
-        <form action="/api/posts/<%= post.id %>?_method=PATCH" method="POST">
-            <input name="title" value="<%= post.title %>">
-            <textarea name="content"><%= post.content %></textarea>
-            <button type="submit">Update Post</button>
-        </form>
-
-        <form action="/api/posts/<%= post.id %>?_method=DELETE" method="POST">
-            <button type="submit">Delete Post</button>
-        </form>
+            <form action="/api/posts/<%= post.id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete Post</button>
+            </form>
+        </section>
+        
+        <section class="post-detail">
+            <h1><%= post.title %></h1>
+            <p><%= post.content %></p>
+            <% if (author) { %>
+            <p><strong>Author:</strong> <a href="/api/users/<%= author.id %>"><%= author.name %></a></p>
+            <% } else { %>
+            <p><strong>Author:</strong> Unknown</p>
+            <% } %>
+            <%- include('partials/post-comments', { comments: postComments, users }) %>
+        </section>
     </main>
 
 </body>
+
 </html>
