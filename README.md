@@ -1,23 +1,43 @@
-# UI Admin 
-- UI for non-technical admins to CRUD on Posts, Users, Comments
+# U
+- U
 
 # Steps
 1. Copy rerepository to your local file
 ```
 git clone https://github.com/xiaochendev/gRepo.git
 ```
+2. Change to direcotry
+```
+cd gRepo
+```
 
-2. Install all the required dependencies
+3. Create .env in mongodb_app dir
+```
+touch .env
+```
+4. Add variables in .env
+```
+MONGO_URI=<YOUR_MONGODB_COLLECTION_CONNECTION>
+PORT=3000
+```
+
+5. Install all the required dependencies
 ```
 npm install
 ```
 
-3. Start the server
+6. Start the server
 ```
 npm start
 ```
 
-4. Its viewable in your browser by entering
+7. Add Seed-data into your mongodb First by visiting broswer
+```
+localhost:3000/seed
+```
+- notes: Your supposed to see 'All animal data seeded successfully' if Your set MONGO_URI corretly in .env
+
+8. Then, Its viewable in your browser by entering
 ```
 localhost:3000
 ```
@@ -28,32 +48,16 @@ Notes: Install Extensions (Thunder Client or Postman) in Visual Studio allow you
 |  VERB |   PATH | QUERY PARAMS | DESCRIPTION |
 |----------|----------|--------|------------------------------|
 | Pages |   |   |   |
-|  GET  | / |  - |  Render home page (EJS) |
-|  GET  | /about |  - |  Render about page (EJS) |
-| Users |   |   |   |
-|  GET  | /api/users |  - |  Get all users  |
-|  POST  | /api/users |  - |  Create a new user  |
-|  GET  | /api/users/:id |  - |  Get user by ID |
-|  PATCH  | /api/users/:id |  - |  Update user fields by ID |
-|  DELETE  | /api/users/:id |  - |  Delete user by ID |
-|  GET  | /api/users/:id/posts |  - |  Get all posts created by the user |
-|  GET  | /api/users/:id/comments |  postId |  Get all comments by the user; filter by post if postId is provided|
-| Posts |   |   |   |
-|  GET  | /api/posts |  userId |  Get all posts; filter by userId  |
-|  POST  | /api/posts |  - | Create a new post |
-|  GET  | /api/posts/:id |  - | Get post by ID |
-|  PATCH  | /api/posts/:id |  - | Update post fields by ID |
-|  DELETE  | /api/posts/:id |  - | Delete post by ID |
-|  GET  | /api/posts/:id/comments |  userId | Get all comments on post; filter by userId if provided |
-| Comments |   |   |   |
-|  GET  | /api/comments |  userId, postId |  Get all comments; filter by userId, postId, or both  |
-|  POST  | /api/comments |  - |  Create a new comment  |
-|  GET  | /api/comments/:id |  - |  Get comment by ID  |
-|  PATCH  | /api/comments/:id |  - |  Update comment body |
-|  DELETE  | /api/comments/:id |  - |  Delete comment by ID |
+|  GET  | / |  - |  Render home page|
+
 
 # Technologies
-- express.js
-- css
-- html
+- react.js
+- Node.js
+- Express.js
+- mongoose
 
+# Reflections
+- What could you have done differently during the planning stages of your project to make the execution easier?
+  
+  D
