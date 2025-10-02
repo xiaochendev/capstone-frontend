@@ -56,10 +56,9 @@ export default function App() {
         <button onClick={() => setFilter("all")}>All</button>
         <button onClick={() => setFilter("active")}>Active</button>
         <button onClick={() => setFilter("completed")}>Completed</button>
-      </div>
+      </div>  <br /> 
 
-      <div>
-        <h2>Todos</h2>
+      <div> 
         {todosList}
       </div>
     </>
