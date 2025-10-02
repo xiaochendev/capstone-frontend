@@ -1,5 +1,6 @@
-#  Movie Search
-- Allow user to search movie by name via OMDB API
+#  To Do List App
+- Allow the user to add, edit, remove todo from todo lists
+
 
 # Steps
 1. Copy rerepository to your local file
