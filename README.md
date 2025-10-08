@@ -1,4 +1,7 @@
 #  T
+
+[link to backend](https://github.com/xiaochendev/capstone-backend)
+
 ### Capstone Breakdown:
  - Project Approvals:
     - What is your app and why?
@@ -49,24 +52,23 @@ npm run dev
 http://localhost:5173/
 ```
 
-
 # Technologies
 - React.js
 - Node.js
 - Mongoose
 
-# Reflections:
+# Reflections
 - Did you deliver a project that met all of the technical requirements?
-    - NA
+    NA
 - Given what the class has covered, did you build something reasonably complex?
-    - NA
+    NA
 - Did you add a personal touch or a creative element into your project submission?
-    - NA
+    NA
 - Did you deliver something of value to the end-user (not just a login button and an index page)?
-    - NA
+    NA
 - Did you follow the code style guidance and exercise best practices?
-    - NA
+    NA
 - Did you provide an appropriate level of comments?
-    - NA
+    NA
 - Did you try to deploy your application to a public URL as a personal stretch goal?
-    - NA
+    NA
