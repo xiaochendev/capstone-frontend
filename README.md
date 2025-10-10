@@ -1,13 +1,47 @@
 #  T
 
-[link to backend](https://github.com/xiaochendev/capstone-backend)
+[Link to backend](https://github.com/xiaochendev/capstone-backend)
 
 ### Capstone Breakdown:
  - Project Approvals:
     - What is your app and why?
+        - Game platform, allow users/guests to play various games, because just wanna play a quick game.
     - What is the shape/model of your data?
+        - User
+            - username,
+            - email,
+            - passwordHash,
+            - isGuest: Boolean
+        - Game
+            - name,
+            - description,
+            - type
+        - GameSeesion
+            - userId, 
+            - gameId,
+            - ? score,
+            - timeToComplete,
+            - isCompleted
     - What are your CRUD Routes?
+        - user
+            - POST register/create a user account
+            - POST login user
+            - PUT update user profile (pw, username)
+            - DELETE user
+        - game
+            - POST new gameSession
+        - dashboard
+            - public
+                - GET show top N players in global
+            - private (Registered users only)
+                - GET personal game history
+                - DELETE personal game history
     - Wireframe/what are your 4 pages?
+        - home:  ??? guest/register/login
+        - game: play
+        - dashboard (public)
+        - dashboard (private): shows personal info and game history
+
  - FrontEnd:
     - 4 pages (react-router-dom)
     - Manage state using ReactHooks or other state MGMT tools (useState, useReducer, redux, useEffect)
@@ -55,6 +89,7 @@ http://localhost:5173/
 # Technologies
 - React.js
 - Node.js
+- Express.js
 - Mongoose
 
 # Reflections
