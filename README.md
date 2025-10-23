@@ -43,7 +43,7 @@ http://localhost:5173/
 |`/`                 | Home Page                                | Public                 |
 | `/dashboard`       | Dashbord Page                            | Private: guest or user |
 | `/game`            | Game Page                                | Private: guest or user |
-| `/auth/login"`     | Auth Page                                | Public                 |
+| `/auth/login`     | Auth Page                                | Public                 |
 
 
 # Technologies
