@@ -6,7 +6,7 @@ axios.defaults.withCredentials = true; // ✅ must include this in requests that
 
 const AuthContext = createContext();  
 
-export default function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
   // const [cookies, setCookies, removeCookie] = useCookies();
   const [user, setUser] = useState(null);   
   const connStr = "http://localhost:3000";
