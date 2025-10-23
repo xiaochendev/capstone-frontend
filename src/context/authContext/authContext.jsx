@@ -144,6 +144,11 @@ export default function AuthProvider({ children }) {
     fetchUser()     // auto-fetch user
   }, []); 
 
+  async function upgradeGuest(data) {
+  const res = await axios.post(`${connStr}/auth/upgrade`, data);
+  setUser(res.data.user);
+  }
+
   const value = useMemo(
     () => ({
       user,
@@ -152,6 +157,8 @@ export default function AuthProvider({ children }) {
       signUp,
       logout,
       startAsGuest,
+      setUser,
+      upgradeGuest,
     }),
     [user]);
 

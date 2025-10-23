@@ -4,7 +4,7 @@ import { useAuth } from "../../context/authContext/authContext";
 import { useNavigate } from "react-router-dom";
 
 export default function RegisterForm({ setNewUser }) {
-  const { signUp, user } = useAuth();
+  const { signUp, user, upgradeGuest } = useAuth();
   const nav = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
@@ -32,16 +32,30 @@ export default function RegisterForm({ setNewUser }) {
       if (formData.password !== formData.password2)
         throw new Error("Password Dont Match");
 
-      await signUp(
+      const payload = 
         { username: formData.username,
           email: formData.email,
           password: formData.password,
           password2: formData.password2
-        });
+        };
+      if (isUpgrading) {
+        await upgradeGuest(  
+          {username: formData.username,
+          email: formData.email,
+          password: formData.password});
+      } else {
+        await signUp(payload);
+      }
+
 
       nav("/game"); // Go straight to protected route
     } catch (err) {
-      console.error(err.message);
+      // console.error(err.message);
+        if (err.response && err.response.data && err.response.data.error) {
+          alert(err.response.data.error);  // or show error message nicely in the UI
+        } else {
+          alert("An unexpected error occurred");
+        }
     }
   }
 

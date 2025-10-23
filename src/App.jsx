@@ -9,7 +9,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import AuthPage from "./pages/AuthPage/AuthPage";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 import GamePage from "./pages/GamePage/GamePage";
-
+import NotFound from "./pages/NotFound.jsx";
 // Components
 import RequireRegisteredUser from "./components/RequireRegisteredUser";
 import Nav from "./components/Nav/Nav";
@@ -45,7 +45,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth/login" element={<AuthPage />} />
-            <Route path="/game" element={<GamePage />} />
+          <Route path="/game" element={<GamePage />} />
+          <Route path="*" element={<NotFound />} />
 
           <Route element={<RequireRegisteredUser />}>
             <Route path="/dashboard" element={<DashboardPage /> } />

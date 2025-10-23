@@ -37,7 +37,7 @@ async function getGameByName(name) {
     throw new Error(`Game with name "${name}" not found`);
   }
 
-  return res.data[0]; // return the first match
+  return res.data[0];   // return the first match
 }
 
 async function submitGameSession({userId, gameId, timeToComplete, isCompleted=false}) {
@@ -56,6 +56,33 @@ async function getUserDashboard() {
   return res.data.stats;      // return an array of stats
 }
 
+// GET /games/leaderboard
+async function getGlobalLeaderboard() {
+  const res = await axios.get(`${baseURL}/games/leaderboard`);
+  return res.data.leaderboard;
+}
+
+// GET /games/:gameId/leaderboard
+async function getLeaderboard(gameId) {
+  const res = await axios.get(`/games/${gameId}/leaderboard`);
+  return res.data.leaderboard;
+}
+
+async function updateUser({ username, email, password }) {
+  const res = await axios.put(`${baseURL}/auth`, {
+    username,
+    email,
+    password,
+  });
+
+  return res.data;        // returns updated user info
+}
+
+async function deleteUser() {
+  const res = await axios.delete(`${baseURL}/auth`);
+  return res.data;      // returns success message
+}
+
 const handleUpgrade = async () => {
   const res = await axios.post(`${baseURL}/auth/upgrade`, {
     username, email, password
@@ -64,6 +91,14 @@ const handleUpgrade = async () => {
   return res.data
 }
 
-
-
-export default { getUser, getGameByName, submitGameSession, getGameByName, getUserDashboard, handleUpgrade};
+export default { 
+  getUser, 
+  getGameByName, 
+  submitGameSession, 
+  getGameByName, 
+  getUserDashboard, 
+  getLeaderboard, 
+  getGlobalLeaderboard, 
+  updateUser,
+  deleteUser, 
+  handleUpgrade};

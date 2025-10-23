@@ -2,9 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import apiService from '../../utilities/apiService.mjs'; 
 import { useAuth } from '../../context/authContext/authContext'; // for token or guestID
+import style from './Game.module.css';
 
 
-const CARD_PAIRS = 6;           // num of pairs in the game
+// const CARD_PAIRS = 6;           // num of pairs in the game
+const EMOJI_PAIRS = ['👽', '🤡', '👻', '👿', '🍎', '🍌', '🍇', '🍓', '🍍', '🥝'];
+const CARD_PAIRS = EMOJI_PAIRS.length;
 
 function shuffleArray(array) {
   return array.sort(() => Math.random() - 0.5);
@@ -13,15 +16,19 @@ function shuffleArray(array) {
 // Create pairs of cards numbered 1 to CARD_PAIRS, shuffle them
 function createCards() {
   const cards = [];
-  for (let i = 1; i <= CARD_PAIRS; i++) {
-    // id: unique identifier
-    // pairId: to match with its twin
-    // flipped: is face-up?
-    // matched: is it already matched?
-    cards.push({ id: i * 2 - 1, pairId: i, flipped: false, matched: false });
-    cards.push({ id: i * 2, pairId: i, flipped: false, matched: false });
-  }
-  return shuffleArray(cards);
+  // for (let i = 1; i <= CARD_PAIRS; i++) {
+  //   // id: unique identifier
+  //   // pairId: to match with its twin
+  //   // flipped: is face-up?
+  //   // matched: is it already matched?
+  //   cards.push({ id: i * 2 - 1, pairId: i, flipped: false, matched: false });
+  //   cards.push({ id: i * 2, pairId: i, flipped: false, matched: false });
+  // }
+    EMOJI_PAIRS.forEach((emoji, index) => {
+    cards.push({ id: index * 2, pairId: index, emoji, flipped: false, matched: false });
+    cards.push({ id: index * 2 + 1, pairId: index, emoji, flipped: false, matched: false });
+    });
+    return shuffleArray(cards);
 }
 
 export default function CardFlipGame() {
@@ -101,12 +108,15 @@ export default function CardFlipGame() {
       // game ends
       setGameEnded(true);
 
+      // Set final elapsed time
+      const finalTime = Math.floor((Date.now() - startTime) / 1000);
+      setElapsedTime(finalTime);
+      
       // timer stops
       clearInterval(timeRef.current);
-
-      const timeToComplete = (Date.now() - startTime) / 1000; // in seconds
+      
       // result is submitted
-      submitResult(timeToComplete);
+      submitResult(finalTime);
     }
   }, [matchedCount]);
 
@@ -189,7 +199,8 @@ export default function CardFlipGame() {
               border: card.matched ? '2px solid green' : '1px solid #000',
             }}
           >
-            {card.flipped || card.matched ? card.pairId : ''}
+            {/* {card.flipped || card.matched ? card.pairId : ''} */}
+            {card.flipped || card.matched ? card.emoji : ''}
           </div>
         ))}
       </div>
@@ -197,7 +208,8 @@ export default function CardFlipGame() {
       {gameEnded ? (
         <div>
           <p> 🚀 Game completed in {elapsedTime}s</p>
-          <button onClick={() => {
+          <button className={style.btn}
+            onClick={() => {
             clearInterval(timeRef.current);
             setCards(createCards());
             setMatchedCount(0);
@@ -214,7 +226,8 @@ export default function CardFlipGame() {
       ( 
         <div>
           <p><strong>🕛 Time: {elapsedTime} s</strong></p>
-            <button onClick={() => {
+            <button className={style.btn} 
+              onClick={() => {
               if (gameStarted && !gameEnded) {
                 const timeToComplete = (Date.now() - startTime) / 1000;
                 submitResult(timeToComplete, false);
@@ -236,7 +249,7 @@ export default function CardFlipGame() {
       {isGuest && (
         <div style={{ marginTop: '20px' }}>
           <p><strong>You are playing as a GUEST!!! Save before losing it?</strong></p>
-          <button onClick={handleRegisterClick}>Register Now</button>
+          <button className={style.btn} onClick={handleRegisterClick}>Register Now</button>
         </div>
       )}
 

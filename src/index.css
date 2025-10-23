@@ -4,7 +4,7 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: var(--blue);
+  background-color:var(--pineGreen) ;
   color: var(--babyBlue);
 }
 
@@ -14,12 +14,20 @@ body {
   box-sizing: inherit;
 }
 
-:root {
+/* :root {
   --red: #D00000;
   --yello: #FFBA08;
   --babyBlue: #3F88C5;
   --blue: #032B43;
-  --pineGreen: #032B43
+  --pineGreen: #7d85c0; 
+} */
+
+:root {
+  --red: #D00000;
+  --yello: #FFBA08;
+  --babyBlue:  white;
+  --blue: black;
+  --pineGreen: #87a96b;
 }
 
 .home-forms {
