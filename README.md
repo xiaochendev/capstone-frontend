@@ -6,7 +6,7 @@
 - allow guest to upgrade their account
 
 [Link to backend](https://github.com/xiaochendev/capstone-backend)
-![Used Jira](./jira.png)
+[Used Jira](./jira.png)
 
 # Steps
 **KEEP SERVER(backend) RUNNING**
