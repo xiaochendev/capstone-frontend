@@ -77,7 +77,7 @@ http://localhost:5173/
     - additional features could be added inthe future
         Added more games, more responsive history in user dashboard
 
-### Capstone Breakdown:
+### Planning:
  - Project Approvals:
     - What is your app and why?
         - Game platform, allow users/guests to play various games, because just wanna play a quick game.
@@ -116,20 +116,3 @@ http://localhost:5173/
         - game: play
         - dashboard (public)
         - dashboard (private): shows personal info and game history
-
- - FrontEnd:
-    - 4 pages (react-router-dom)
-    - Manage state using ReactHooks or other state MGMT tools (useState, useReducer, redux, useEffect)
-    - Full C.R.U.D capabilities from your DB
- - Backend/Server:
-    - Connect to your DB
-    - Effective Error Handling
-    - C.R.U.D capabilities
- - Documentation:
-    - Well documented readme
-    - Full Commit history, 25 commits- ish
-    - Presentation
- - Extra Credit:
-    - using JIRA or other project tracking software 1%
-    - typescript 3%
-    - authentication 2%
