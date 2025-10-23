@@ -39,6 +39,7 @@ http://localhost:5173/
 
 # API References - frontend
 | **Route**          | **Description**                          | **Access**             |
+|--|--|--|
 |`/`                 | Home Page                                | Public                 |
 | `/dashboard`       | Dashbord Page                            | Private: guest or user |
 | `/game`            | Game Page                                | Private: guest or user |
