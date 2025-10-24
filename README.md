@@ -1,7 +1,7 @@
 # Game platform
 - allow users to play game without register
 - registered users are able to update/delete their profile
-- registered user able to access their personal dashboard
+- registered users are able to access their personal dashboard
 - both guest and registered users are able to view top10 leaderboard
 - allow guest to upgrade their account
 
@@ -43,7 +43,7 @@ http://localhost:5173/
 |`/`                 | Home Page                                | Public                 |
 | `/dashboard`       | Dashbord Page                            | Private: guest or user |
 | `/game`            | Game Page                                | Private: guest or user |
-| `/auth/login`     | Auth Page                                | Public                 |
+| `*`                | 404                                      | Public                 |
 
 
 # Technologies
